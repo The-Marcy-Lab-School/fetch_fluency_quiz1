@@ -2,12 +2,6 @@ const fetch = require('node-fetch');
 
 const baseUrl = "https://jsonplaceholder.typicode.com";
 
-const genericReq = async(route) => {
-  const req = await fetch(baseUrl + route);
-  const json = await req.json();
-  return json;
-};
-
 const getPost = async (id) => {
   return genericReq('/posts/' + id);
 };
@@ -41,6 +35,12 @@ const searchPosts = async(word) => {
   return json.filter(function(post){return post.body.includes(word)});
 };
 
+async function genericReq(route) {
+  const req = await fetch(baseUrl + route);
+  const json = await req.json();
+  return json;
+}
+
 module.exports = {
   getPost,
   getUsers,
@@ -49,54 +49,3 @@ module.exports = {
   numCompleted,
   searchPosts,
 };
-
-const form = document.getElementById('nameSearchForm');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const desiredUserName = form.nameInput.value;
-  let json = await genericReq('/users');
-  json = json.map(
-    function(user){
-      return {
-        name: user.name,
-        username: user.username,
-        email: user.email,
-        address: user.address.street + user.address.suite + user.address.city,
-        phone: user.phone,
-        website: user.website
-      };
-    });
-  const foundUser = json.find(function(user) {
-    return user.name.split(' ').includes(desiredUserName);
-  });
-
-  console.log(foundUser);
-
-  if (foundUser) {
-    document.body.innerHTML += `
-    <table>
-      <thead>
-        <tr>
-          <th colspan="2">${foundUser.name}</th>
-        </tr>
-      </thead>
-      <tbody id="userDataBody">
-      </tbody>
-    </table>
-    `;
-
-    for (const prop in foundUser){
-      document.getElementById('userDataBody').innerHTML += `
-      <tr>
-      <td>${prop}</td>
-      <td>${foundUser[prop]}</td>
-      </tr>
-      `;
-    }
-
-  } else {
-    document.body.innerHTML += '<p>No User Found</p>';
-  }
-
-})
