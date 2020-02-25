@@ -1,6 +1,6 @@
 const app = require('./app');
 
-test('getPost', () => {
+xtest('getPost', () => {
   const json = {
     "userId": 1,
     "id": 2,
@@ -11,7 +11,7 @@ test('getPost', () => {
 });
 
 
-test('getUsers', () => {
+xtest('getUsers', () => {
   const users = [
     "Leanne Graham",
     "Ervin Howell",
@@ -27,7 +27,7 @@ test('getUsers', () => {
   expect(app.getUsers()).resolves.toEqual(users);
 });
 
-test('getAddresses', () => {
+xtest('getAddresses', () => {
   const addresses = [
     "Kulas Light, Apt. 556, Gwenborough",
     "Victor Plains, Suite 879, Wisokyburgh",
@@ -43,7 +43,7 @@ test('getAddresses', () => {
   expect(app.getAddresses()).resolves.toEqual(addresses);
 });
 
-test('shortestPost', () => {
+xtest('shortestPost', () => {
   const shortest = {
     "userId": 8,
     "id": 76,
@@ -54,11 +54,11 @@ test('shortestPost', () => {
   expect(app.shortestPost()).resolves.toEqual(shortest);
 });
 
-test('numCompleted', () => {
+xtest('numCompleted', () => {
   expect(app.numCompleted()).resolves.toBe(90);
 });
 
-test('searchPosts', () => {
+xtest('searchPosts', () => {
   expect(app.searchPosts('consequuntur')).resolves.toHaveLength(9);
   expect(app.searchPosts('quia')).resolves.toHaveLength(29);
 })

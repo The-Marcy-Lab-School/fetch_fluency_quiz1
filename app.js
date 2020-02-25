@@ -48,11 +48,10 @@ const searchPosts = async(word) => {
 };
 
 module.exports = {
-  getPost,
-  getUsers,
-  getAddresses,
-  shortestPost,
-  numCompleted,
-  searchPosts,
-  getReq
+  // getPost,
+  // getUsers,
+  // getAddresses,
+  // shortestPost,
+  // numCompleted,
+  // searchPosts,
 };
