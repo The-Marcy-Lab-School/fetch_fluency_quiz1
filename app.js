@@ -83,5 +83,5 @@ module.exports = {
   // getAddresses,
   // shortestPost,
   // numCompleted,
-  // searchPosts
+  // searchPosts,
 };
