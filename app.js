@@ -1,4 +1,4 @@
-// const fetch = require('node-fetch');
+const fetch = require('node-fetch');
 
 const requestMethod = (method, url , data) => {
 	return fetch(url, {
@@ -104,11 +104,11 @@ form.addEventListener('submit', async (e)=>{
 });
 
 
-// module.exports = {
-//   getPost,
-//   getUsers,
-//   getAddresses,
-//   shortestPost,
-//   numCompleted,
-//   searchPosts,
-// };
+module.exports = {
+  getPost,
+  getUsers,
+  getAddresses,
+  shortestPost,
+  numCompleted,
+  searchPosts,
+};
