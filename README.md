@@ -1,6 +1,8 @@
-# Code Fluency Quiz: Asynchronous HTTP Requests
+Code Fluency Quiz: Asynchronous HTTP Requests
+---
 
-## Directions
+Directions
+===
 For the following questions, use the [JSON Placeholder API](https://jsonplaceholder.typicode.com).
 Because we are testing in Node, we will be using the `node-fetch` module. This will allow us to use the `window.fetch` function in Node as we typically do in the browser. We import this module on line 1 of `app.js`. 
 
