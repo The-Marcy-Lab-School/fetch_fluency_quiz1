@@ -78,18 +78,17 @@ const searchPosts = async function(searchWord) {
 }
 
 const form = document.getElementById('inputs')
-const body = document.getElementsByTagName('body')
+const body = document.getElementsByTagName('body')[0]
 const userInput = document.getElementById('nameInput')
 
 form.addEventListener('submit', async(e) => {
   e.preventDefault();
-
-  let response = await fetch('https://cors-anywhere.herokuapp.com/https://jsonplaceholder.typicode.com/users')
-  let data = await response.json()
-  let userData = data.filter(user => user.name.includes(userInput.value))
-
-  if (userData !== undefined) {
-    body.innerHTML += `
+  try {
+    let response = await fetch('https://cors-anywhere.herokuapp.com/https://jsonplaceholder.typicode.com/users')
+    let data = await response.json()
+    let userData = data.filter(user => user.name.includes(userInput.value))
+    if (userData && userData.length < 2) {
+      body.innerHTML += `
     <table>
       <thead>
         <tr>
@@ -100,20 +99,27 @@ form.addEventListener('submit', async(e) => {
 
       <tbody>
         <tr>
-          <td>${userData.name.split(' ')[0]}</td>
-          <td>${userData.name.split(' ')[1]}</td>
+          <td>${userData[0].name.split(' ')[0]}</td>
+          <td>${userData[0].name.split(' ')[1]}</td>
         </tr>
       </tbody>
     </table>
   `;
+    }
+    else {
+      body.innerHTML += `
+    <h2>Please input a name.</h2>
+    `;
+    }
+    userInput.value = '';
   }
-  else {
+  catch (err) {
+    console.warn(err)
     body.innerHTML += `
     <h2>No user found.</h2>
     `;
   }
-  userInput.value = '';
-})
+});
 
 module.exports = {
   // getPost,
