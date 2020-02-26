@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 
 const getPost = async function(postID) {
   try {
@@ -76,6 +76,44 @@ const searchPosts = async function(searchWord) {
     console.log(err)
   }
 }
+
+const form = document.getElementById('inputs')
+const body = document.getElementsByTagName('body')
+const userInput = document.getElementById('nameInput')
+
+form.addEventListener('submit', async(e) => {
+  e.preventDefault();
+
+  let response = await fetch('https://cors-anywhere.herokuapp.com/https://jsonplaceholder.typicode.com/users')
+  let data = await response.json()
+  let userData = data.filter(user => user.name.includes(userInput.value))
+
+  if (userData !== undefined) {
+    body.innerHTML += `
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>${userData.name.split(' ')[0]}</td>
+          <td>${userData.name.split(' ')[1]}</td>
+        </tr>
+      </tbody>
+    </table>
+  `;
+  }
+  else {
+    body.innerHTML += `
+    <h2>No user found.</h2>
+    `;
+  }
+  userInput.value = '';
+})
 
 module.exports = {
   // getPost,
