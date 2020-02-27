@@ -75,48 +75,48 @@ async function searchPosts(searchWord) {
   return data.filter(posts => posts.body.includes(searchPosts))
 }
 
-// Question #7
-// async function userArray(input) {
-//   const userData = await getUsersJSON();
-//   return userData.filter(users => users.name.includes(input))
-// }
-// console.log(userArray('Ervin'));
+Question #7
+async function userArray(input) {
+  const userData = await getUsersJSON();
+return userData.filter(users => users.name.includes(input))
+}
+console.log(userArray('Ervin'));
 
-// const userForm = document.getElementById("user-search")
+const userForm = document.getElementById("user-search")
 
-// userForm.addEventListener("submit", async(e) => {
-//   e.preventDefault();
+userForm.addEventListener("submit", async(e) => {
+  e.preventDefault();
 
-//   const userInput = userForm[0].value
-//   const userdata = await userArray(userInput);
-//   console.log(userdata[0].name)
+  const userInput = userForm[0].value
+  const userdata = await userArray(userInput);
+  console.log(userdata[0].name)
 
-//   let username = ""
+  let username = ""
 
-//   if (userdata[0].name.includes(userInput)) {
-//     username = userdata[0].name
-//   }
-//   console.log(username)
+  if (userdata[0].name.includes(userInput)) {
+    username = userdata[0].name
+  }
+  console.log(username)
 
-//   if (username) {
-//     document.body.innerHTML += `
-//     <table>
-//       <thead>
-//         <tr>
-//           <th>name</th>
-//         </tr>
-//       </thead>
-//       <tbody>
-//         <tr>
-//           <td>${userdata[0].name}</td>
-//         </tr>
-//       </tbody>
-//     </table>  `
-//   }
-//   else {
-//     document.body.innerHTML += '<p>No User Found</p>';
-//   }
-// })
+  if (username) {
+    document.body.innerHTML += `
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>${userdata[0].name}</td>
+        </tr>
+      </tbody>
+    </table>  `
+  }
+  else {
+    document.body.innerHTML += '<p>No User Found</p>';
+  }
+})
 
 module.exports = {
   getPost,
