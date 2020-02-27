@@ -48,7 +48,7 @@ const numCompleted = () => {
   fetch(`${url}/todos`)
     .then(data => data.json())
     .then(json => {
-      const finalData = json.reduce(post => { post.completed = true })
+      const finalData = json.filter(post => { post.completed = true })
     })
     console.log(finalData);
     return finalData;
@@ -71,11 +71,23 @@ const input = document.getElementById("input");
 
 
 button.addEventListener("click", (e) => {
-  e.preventDefault();
+const u = 0;
 
-  const data = getUsers();
+const ourUser = fetch(`${url}users/`)
+  .then(response => response.json())
+  .then(json => json.filter(data => {return data.name.includes(input.value)}
+  ))
+  .catch(err => console.warn(err));
+  
+  const name = document.getElementById("name");
+  const title = document.getElementById("title");
+  const docBody = document.getElementById("body");
+  
+  name.innerText = ourUser.name
   
 })
+
+
 
 // In the index.html file, create a form with a text input and a submit button. When you submit a users name (first or last),
 // the text input should clear and a table with the user's data should appear below the form. If no user is found, a message 
