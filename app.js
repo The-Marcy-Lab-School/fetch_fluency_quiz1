@@ -1,4 +1,4 @@
-//const fetch = require('node-fetch');
+const fetch = require('node-fetch');
 
 async function getPost(postId){
   const url = 'https://jsonplaceholder.typicode.com/posts';
@@ -41,19 +41,19 @@ async function numCompleted(){
   return arr.filter(obj => obj.completed === true).length;
 }
 
-// async function searchPosts(searchWord){
-//   const url = 'https://jsonplaceholder.typicode.com/posts';
-//   const response = await fetch(url);
-//   const posts = await response.json();
+async function searchPosts(searchWord){
+  const url = 'https://jsonplaceholder.typicode.com/posts';
+  const response = await fetch(url);
+  const posts = await response.json();
   
-//   return posts.filter(post => post.body.includes(searchWord));
-// }
+  return posts.filter(post => post.body.includes(searchWord));
+}
 
-// module.exports = {
-//   getPost,
-//   getUsers,
-//   getAddresses,
-//   shortestPost,
-//   numCompleted,
-//   searchPosts,
-// };
+module.exports = {
+  getPost,
+  getUsers,
+  getAddresses,
+  shortestPost,
+  numCompleted,
+  searchPosts,
+};
