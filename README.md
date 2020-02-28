@@ -32,3 +32,4 @@ Install necessary dependencies with `npm install`. Write your solutions to the p
 6. Write a function called `searchPosts` that takes a string argument (`searchWord`) and returns a Promise that resolves to an array containing all of the posts have the search word in the body of the post.
 
 7. In the `index.html` file, create a form with a text input and a submit button. When you submit a users name (first or last), the text input should clear and a table with the user's data should appear below the form. If no user is found, a message saying, "No User Found" should appear below the form.
+ 
