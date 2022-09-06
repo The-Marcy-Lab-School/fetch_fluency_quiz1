@@ -60,5 +60,5 @@ xtest('numCompleted', () => {
 
 xtest('searchPosts', () => {
   expect(app.searchPosts('consequuntur')).resolves.toHaveLength(9);
-  expect(app.searchPosts('quia')).resolves.toHaveLength(29);
+  expect(app.searchPosts('quia')).resolves.toHaveLength(22);
 })
