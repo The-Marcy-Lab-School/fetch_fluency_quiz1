@@ -4,7 +4,7 @@
   "description": "## Directions For the following questions, use the [JSON Placeholder API](https://jsonplaceholder.typicode.com)",
   "main": "app.js",
   "dependencies": {
-    "jest": "^25.1.0",
+    "jest": "^29.6.1",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {},
